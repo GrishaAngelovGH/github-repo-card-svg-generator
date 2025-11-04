@@ -64,17 +64,19 @@ def generate_svg(repo_info):
     # Add a bit more space before the row with the language and stars
     y_position += 10
     
+    star_x_pos = 15
     # Add the language circle and text only if there is a language
     if repo_info['language']:
         svg_template += f"""
         <circle cx="15" cy="{y_position - 5}" r="6" fill="{language_color}"/>
         <text x="25" y="{y_position}" font-size="14" font-family="Arial" fill="black">{repo_info['language']}</text>
     """
+        star_x_pos = 115
     
     # Add the stars only if there are stars
     if repo_info['stars'] > 0:
         svg_template += f"""
-        <text x="115" y="{y_position}" font-size="14" font-family="Arial" fill="black">⭐ {repo_info['stars']}</text>
+        <text x="{star_x_pos}" y="{y_position}" font-size="14" font-family="Arial" fill="black">⭐ {repo_info['stars']}</text>
     """
     
     svg_template += f"""
